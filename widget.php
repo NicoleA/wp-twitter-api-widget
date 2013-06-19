@@ -38,42 +38,50 @@ class TAPI_Widget extends WP_Widget {
 		$tweets = '';
 		if ( !empty( $list ) && !is_array( $screen_name ) && !empty( $screen_name ) ) {
 			// if list has a value, then we want the list items, and need a single user name of the list owner
-			$tweets = tapi_get_list_timeline( $list, $screen_name, $count );
+			$args = array(
+				'type' => 'list_timeline',
+				'owner_screen_name' => $names,
+				'slug' => $list,
+				'count' => $count
+			);
 		} elseif ( is_array( $screen_name ) ) {
-			$tweets = tapi_get_merged_user_timelines( $screen_name, $count );
+			// temporarily disable multiple name search
+			echo "This feature is temporarily disabled.";
+			return;
 		} elseif ( !array( $screen_name ) && !empty( $screen_name ) ) {
-			$tweets = tapi_get_user_timeline( $screen_name, $count );
+			$args = array(
+				'owner_screen_name' => $names,
+				'count' => $count
+			);
 		} else {
 			echo "Settings combination is invalid. Please check your widget settings.";
 			return;
 		}
-
 		echo $before_widget; ?>
 			<div class="tapi">
 				<div class="tapi-header"><?php echo esc_html( $title ); ?></div>
 				<div class="tapi-wrapper">
-					<!-- <div class="tweets-scroll">
-						<a href="#" id="more-tweets-up">More Tweets &#9650;</a>
-					</div> -->
 					<div class="tapi-tweets">
-						<?php $x = 0; foreach ( $tweets as $tweet ): $x++; ?>
-							<div class="tapi-tweet <?php if ( $x == count( $tweets ) ): ?> last<?php endif; ?>">
-								<a class="tapi-avatar" href="http://twitter.com/<?php print esc_attr( $tweet->user->screen_name ); ?>"><img src="<?php print esc_attr( $tweet->user->profile_image_url ); ?>" width="48" height="48" /></a>
+						<?php $x = 0;
+							tapi_query_tweets( $args );
+							while ( tapi_have_tweets() ) : tapi_the_tweet(); ?>
+							<div class="tapi-tweet">
+								<a class="tapi-avatar" href="<?php print esc_attr( tapi_get_author_permalink() ); ?>"><img src="<?php print esc_attr( tapi_get_author_avatar_url() ); ?>" width="48" height="48" /></a>
 								<div class="tapi-text">
 									<div class="tapi-user">
-										<span class="tapi-timestamp"><?php print tapi_twitter_time( $tweet->created_at ); ?></span>
-										<a class="tapi-user-name" href="http://twitter.com/<?php print esc_attr( $tweet->user->screen_name ); ?>"><?php print esc_html( $tweet->user->name ); ?></a>
-										<a class="tapi-screen-name" href="http://twitter.com/<?php print esc_attr( $tweet->user->screen_name );?>">@<?php print esc_html( $tweet->user->screen_name );?></a>
+										<span class="tapi-timestamp"><?php print tapi_get_timestamp( 'age' ); ?></span>
+										<a class="tapi-user-name" href="<?php print esc_attr( tapi_get_author_permalink() ); ?>"><?php print esc_html( tapi_get_author_name() ); ?></a>
+										<a class="tapi-screen-name" href="<?php print esc_attr( tapi_get_author_permalink() ); ?>">@<?php print esc_html( tapi_get_author_screen_name() );?></a>
 									</div>
-									<?php print wp_kses_post( $tweet->text ); ?>
+									<?php print wp_kses_post( tapi_get_text() ); ?>
 									<div class="tapi-meta">
-										<a class="tapi-reply" href="http://twitter.com/intent/tweet?in_reply_to=<?php print esc_attr( $tweet->id ); ?>"><span>reply icon</span>reply</a>
-										<a class="tapi-retweet" href="http://twitter.com/intent/retweet?tweet_id=<?php print esc_attr( $tweet->id ); ?>"><span>retweet icon</span>retweet</a>
-										<a class="tapi-favorite" href="http://twitter.com/intent/favorite?tweet_id=<?php print esc_attr( $tweet->id ); ?>"><span>favorite icon</span>favorite</a>
+										<a class="tapi-reply" href="http://twitter.com/intent/tweet?in_reply_to=<?php print esc_attr( tapi_get_tweet_id() ); ?>"><span>reply icon</span>reply</a>
+										<a class="tapi-retweet" href="http://twitter.com/intent/retweet?tweet_id=<?php print esc_attr( tapi_get_tweet_id() ); ?>"><span>retweet icon</span>retweet</a>
+										<a class="tapi-favorite" href="http://twitter.com/intent/favorite?tweet_id=<?php print esc_attr( tapi_get_tweet_id() ); ?>"><span>favorite icon</span>favorite</a>
 									</div>
 								</div>
 							</div>
-						<?php endforeach; ?>
+						<?php endwhile; ?>
 					</div>
 				</div>
 				<div class="tapi-footer">
