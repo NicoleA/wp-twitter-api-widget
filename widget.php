@@ -119,13 +119,9 @@ class TAPI_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Number of tweets (default is 20):' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo esc_attr( $count ); ?>" />
 		</p>
-
 <?php
 	}
-
-
 }
-
 
 /**
  * Register the custom WordPress widget on startup.
@@ -143,3 +139,4 @@ function tapi_twitter_widget_init() {
 }
 
 add_action('widgets_init', 'tapi_twitter_widget_init', 1);
+?>
