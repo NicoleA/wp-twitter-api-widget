@@ -1,0 +1,91 @@
+$tapi-blue: #135c8b;
+.tapi {
+	background: $tapi-blue;
+    border: 1px solid #E7E7E7;
+    border-radius: 5px 5px 5px 5px;
+    color: #333333;
+    font: 13px/17px "Tahoma",Helvetica,Arial,sans-serif;
+    margin: auto;
+    max-width: 520px;
+    a {
+    	color: #0083B3;
+    	text-decoration: none;
+    	&:hover {
+	    text-decoration: underline;
+		}
+	}
+	.tapi-header {
+	    border-bottom: 1px solid #E7E7E7;
+	    font-size: 14px;
+	    font-weight: bold;
+	    padding: 12px;
+	    color: #fff;
+	    a {
+		    color: #333333;
+		    font-style: normal;
+		    font-weight: bold;
+		    text-decoration: none;
+		    text-transform: none;
+		    &:hover {
+			    text-decoration: underline;
+			}
+		}
+	}
+	.tapi-wrapper {
+		height: 300px;
+		overflow: hidden;
+		.tapi-tweets {
+			position: relative;
+			top: 0;
+			.tapi-tweet {
+    			border-bottom: 1px solid #E7E7E7;
+    			padding: 12px;
+				background: #FFFFFF;
+				.tapi-avatar {
+				    border-radius: 5px 5px 5px 5px;
+    				float: left;
+				    margin-right: 12px;
+				    display: block;
+				    img {
+			    	    border-radius: 5px 5px 5px 5px;
+				    }
+				}
+				.tapi-text {
+					padding-left: 60px;
+					.tapi-user {
+						a {
+							&.tapi-user-name {
+								color: #333;
+								font-weight: bold;
+								font-size: 13px;
+							}
+							&.tapi-screen-name {
+								color: #999999;
+								font-size: 11px;
+							}
+						}
+						.tapi-timestamp {
+							display: block;
+							width: 33px;
+							float: right;
+							text-align: right;
+							color: #999999;
+							font-size: 11px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.tapi-footer {
+	    padding: 6px 12px;
+	    text-align: center;
+		color: #fff;
+		a {
+			color: #FFFFFF;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}

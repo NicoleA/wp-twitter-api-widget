@@ -1,0 +1,104 @@
+/* line 2, ../sass/style.scss */
+.tapi {
+  background: #135c8b;
+  border: 1px solid #E7E7E7;
+  border-radius: 5px 5px 5px 5px;
+  color: #333333;
+  font: 13px/17px "Tahoma", Helvetica, Arial, sans-serif;
+  margin: auto;
+  max-width: 520px;
+}
+/* line 10, ../sass/style.scss */
+.tapi a {
+  color: #0083B3;
+  text-decoration: none;
+}
+/* line 13, ../sass/style.scss */
+.tapi a:hover {
+  text-decoration: underline;
+}
+/* line 17, ../sass/style.scss */
+.tapi .tapi-header {
+  border-bottom: 1px solid #E7E7E7;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px;
+  color: #fff;
+}
+/* line 23, ../sass/style.scss */
+.tapi .tapi-header a {
+  color: #333333;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: none;
+}
+/* line 29, ../sass/style.scss */
+.tapi .tapi-header a:hover {
+  text-decoration: underline;
+}
+/* line 34, ../sass/style.scss */
+.tapi .tapi-wrapper {
+  height: 300px;
+  overflow: hidden;
+}
+/* line 37, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets {
+  position: relative;
+  top: 0;
+}
+/* line 40, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets .tapi-tweet {
+  border-bottom: 1px solid #E7E7E7;
+  padding: 12px;
+  background: #FFFFFF;
+}
+/* line 44, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets .tapi-tweet .tapi-avatar {
+  border-radius: 5px 5px 5px 5px;
+  float: left;
+  margin-right: 12px;
+  display: block;
+}
+/* line 49, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets .tapi-tweet .tapi-avatar img {
+  border-radius: 5px 5px 5px 5px;
+}
+/* line 53, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets .tapi-tweet .tapi-text {
+  padding-left: 60px;
+}
+/* line 57, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets .tapi-tweet .tapi-text .tapi-user a.tapi-user-name {
+  color: #333;
+  font-weight: bold;
+  font-size: 13px;
+}
+/* line 62, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets .tapi-tweet .tapi-text .tapi-user a.tapi-screen-name {
+  color: #999999;
+  font-size: 11px;
+}
+/* line 67, ../sass/style.scss */
+.tapi .tapi-wrapper .tapi-tweets .tapi-tweet .tapi-text .tapi-user .tapi-timestamp {
+  display: block;
+  width: 33px;
+  float: right;
+  text-align: right;
+  color: #999999;
+  font-size: 11px;
+}
+/* line 80, ../sass/style.scss */
+.tapi .tapi-footer {
+  padding: 6px 12px;
+  text-align: center;
+  color: #fff;
+}
+/* line 84, ../sass/style.scss */
+.tapi .tapi-footer a {
+  color: #FFFFFF;
+}
+/* line 86, ../sass/style.scss */
+.tapi .tapi-footer a:hover {
+  text-decoration: none;
+}
